@@ -10,37 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_165408) do
+ActiveRecord::Schema.define(version: 2018_10_04_212425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cohorts", force: :cascade do |t|
-    t.text "cohort_name"
-    t.date "start_date"
-    t.date "end_date"
+    t.text "cohort_name", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.integer "instructor_id"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.text "course_name"
-    t.integer "total_hours"
+    t.text "course_name", null: false
+    t.integer "total_hours", null: false
   end
 
   create_table "instructors", force: :cascade do |t|
-    t.text "first_name"
-    t.text "last_name"
-    t.integer "age"
-    t.money "salary", scale: 2
-    t.text "highest_completed_education"
+    t.text "first_name", null: false
+    t.text "last_name", null: false
+    t.integer "age", null: false
+    t.integer "salary", null: false
+    t.text "highest_level_of_education", null: false
   end
 
   create_table "students", force: :cascade do |t|
-    t.text "first_name"
-    t.text "last_name"
-    t.integer "age"
-    t.text "highest_level_of_education"
-    t.integer "cohort_id"
+    t.text "first_name", null: false
+    t.text "last_name", null: false
+    t.integer "age", null: false
+    t.text "highest_level_of_education", null: false
   end
 
   create_table "students_cohorts", force: :cascade do |t|
@@ -51,5 +50,4 @@ ActiveRecord::Schema.define(version: 2018_10_04_165408) do
   end
 
   add_foreign_key "cohorts", "instructors"
-  add_foreign_key "students", "cohorts"
 end
