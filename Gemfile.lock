@@ -73,7 +73,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
-    duktape (2.0.1.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25-x86-mingw32)
@@ -190,7 +189,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  duktape
   jbuilder (~> 2.5)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)

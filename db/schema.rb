@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_213043) do
+ActiveRecord::Schema.define(version: 2018_10_04_165408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2018_09_26_213043) do
     t.integer "age"
     t.text "highest_level_of_education"
     t.integer "cohort_id"
+  end
+
+  create_table "students_cohorts", force: :cascade do |t|
+    t.bigint "students_id"
+    t.bigint "cohorts_id"
+    t.index ["cohorts_id"], name: "index_students_cohorts_on_cohorts_id"
+    t.index ["students_id"], name: "index_students_cohorts_on_students_id"
   end
 
   add_foreign_key "cohorts", "instructors"
