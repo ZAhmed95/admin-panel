@@ -1,0 +1,11 @@
+<%= content_for :controls do %>
+  <h1>Controls for courses:</h1>
+  <%= link_to "Create course", new_course_path %>
+<% end %>
+
+<%= content_for :display do %>
+  <h1>Courses:</h1>
+  <div class="container" id="courses">
+    <%= render partial: "course_card", collection: @courses, as: 'course' %>
+  </div>
+<% end %>

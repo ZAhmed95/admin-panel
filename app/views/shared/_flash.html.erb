@@ -1,0 +1,17 @@
+<% if flash[:success] %>
+  <div class="alert alert-success animated fadeOutUp delay-1s">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong><%= flash[:success] %></strong>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong><%= flash[:alert] %></strong>
+  </div>
+<% end %>

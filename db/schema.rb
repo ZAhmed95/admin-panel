@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 2018_10_04_212425) do
     t.text "cohort_name", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
-    t.integer "instructor_id"
+    t.bigint "instructor_id"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_cohorts_on_course_id"
+    t.index ["instructor_id"], name: "index_cohorts_on_instructor_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -33,6 +36,8 @@ ActiveRecord::Schema.define(version: 2018_10_04_212425) do
     t.integer "age", null: false
     t.integer "salary", null: false
     t.text "highest_level_of_education", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -40,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_10_04_212425) do
     t.text "last_name", null: false
     t.integer "age", null: false
     t.text "highest_level_of_education", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "students_cohorts", force: :cascade do |t|
@@ -49,5 +56,9 @@ ActiveRecord::Schema.define(version: 2018_10_04_212425) do
     t.index ["students_id"], name: "index_students_cohorts_on_students_id"
   end
 
-  add_foreign_key "cohorts", "instructors"
+  create_table "users", force: :cascade do |t|
+    t.text "email", null: false
+    t.text "password_digest", null: false
+  end
+
 end

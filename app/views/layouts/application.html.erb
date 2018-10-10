@@ -10,6 +10,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <%= link_to 'Home', main_path %>
+        <%= link_to 'Courses', courses_path %>
+      </nav>
+    </header>
+
+    <!-- this is the control panel on the left side of the screen -->
+    <aside id="controls">
+      <%= yield(:controls) %>
+    </aside>
+
+    <!-- this is where info is displayed, i.e. courses, cohorts, etc. -->
+    <main id="display">
+      <%= render partial: 'shared/flash' %>
+      <%= yield(:display) %>
+    </main>
   </body>
 </html>
