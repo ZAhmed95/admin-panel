@@ -1,0 +1,7 @@
+(function(){
+  var coursesContainer = document.querySelector("#courses");
+
+  var deletedElement = coursesContainer.querySelector("#<%= "course-#{@course.id}" %>");
+
+  coursesContainer.removeChild(deletedElement);
+})();

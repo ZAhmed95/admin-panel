@@ -1,0 +1,10 @@
+<!-- TODO: format and style -->
+<div class="row" id="course-<%=course.id%>">
+  <div class="col">
+    <h1><%= course.course_name %></h1>
+    <h2>Total Hours: <%= course.total_hours %></h2>
+    <%= link_to 'View', course_path(course) %>
+    <%= link_to 'Edit', edit_course_path(course) %>
+    <%= link_to 'Delete', delete_course_path(course), remote: true, method: 'delete' %>
+  </div>
+</div>

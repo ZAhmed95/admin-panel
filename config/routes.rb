@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'students/index'
+  get 'students/show'
+  get 'students/edit'
+  get 'students/update'
+  get 'students/new'
+  get 'students/create'
+  get 'students/destroy'
   # root
   root 'main#index', as: 'main'
   # session
@@ -23,5 +30,5 @@ Rails.application.routes.draw do
   # cohorts in courses
   get 'courses/:id/cohorts', to: 'course_cohorts#index', as: 'cohorts_in_course', id: /\d+/
   get 'courses/:id/cohorts/new', to: 'course_cohorts#new', as: 'new_cohort_in_course', id: /\d+/
-  post 'courses/:id/cohorts/new', to: 'course_cohorts#create', id: /\d+/
+  post 'courses/:id/cohorts', to: 'course_cohorts#create', id: /\d+/
 end

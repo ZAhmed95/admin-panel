@@ -8,20 +8,6 @@ class CohortsController < ApplicationController
     render 'form'
   end
 
-  def create
-    data = params.require(:cohort).permit(:cohort_name, :total_hours)
-    cohort = Cohort.create(data)
-    if cohort.valid?
-      redirect_to cohorts_path
-    else
-      flash[:alert] = "Could not create new cohort."
-      cohort.errors.messages.each do |key, value|
-        flash[:alert] = value[0]
-      end
-      redirect_to new_cohort_path
-    end
-  end
-
   def show
     @cohort = find_cohort_or_redirect
     @course = @cohort.course
