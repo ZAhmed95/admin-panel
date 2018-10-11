@@ -1,29 +1,68 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
+
+require 'faker'
+require 'date'
+
+# Setup
+# set Faker rng, to produce deterministic output every seeding
+Faker::Config.random = Random.new(99)
+education_level = ['hs', 'college', 'masters', 'phd']
+
+# destroy existing data
+p "Deleting existing data"
+Student.destroy_all
+Instructor.destroy_all
+Cohort.destroy_all
+Course.destroy_all
+User.destroy_all
+
+languages = ["C++", "Java", "JavaScript", "Python", "Ruby"]
+hours = [200, 180, 220, 200, 210]
+
+courses = {}
 
 p 'Creating seed courses'
-Course.create(
-  course_name: "Introduction to C++",
-  total_hours: 200
-)
-Course.create(
-  course_name: "Introduction to Java",
-  total_hours: 230
-)
-Course.create(
-  course_name: "Introduction to Python",
-  total_hours: 215
-)
+(0...5).each do |i|
+  courses[languages[i]] = 
+  Course.create!(
+    course_name: "Introduction to #{languages[i]}",
+    total_hours: hours[i]
+  )
+end
+
+p "Create 5 cohorts for each course"
+courses.each do |language, course|
+  (1..5).each do |i|
+    start_date = Faker::Date.between(Date.strptime('09/01/2016', '%m/%d/%Y'), Date.strptime('09/01/2016', '%m/%d/%Y'))
+    course.cohorts.create!(
+      cohort_name: "#{language} Section #{i}",
+      start_date: start_date,
+      end_date: start_date >> 3
+    )
+  end
+end
+
+p "Create 8-12 students for each cohort"
+Cohort.all.each do |cohort|
+  rand(8..12).times do
+    cohort.students.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      age: rand(18..30),
+      highest_level_of_education: education_level.sample,
+    )
+  end
+end
 
 p "Creating admin user"
-admin = User.create(
-  email: 'a',
-  password_digest: 'a'
+User.create!(
+  email: "a",
+  password_digest: "a"
 )
 
 p "Creating seed instructors"
-Instructor.create(
+Instructor.create!(
   first_name: 'John',
   last_name: 'Doe',
   age: 40,

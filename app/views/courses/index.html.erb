@@ -5,7 +5,5 @@
 
 <%= content_for :display do %>
   <h1>Courses:</h1>
-  <div class="container" id="courses">
-    <%= render partial: "course_card", collection: @courses, as: 'course' %>
-  </div>
+  <%= render partial: 'list' %>
 <% end %>

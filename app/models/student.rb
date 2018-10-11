@@ -1,3 +1,4 @@
 class Student < ActiveRecord::Base
-  has_and_belongs_to_many :cohorts
+  has_many :students_cohorts
+  has_many :cohorts, through: :students_cohorts
 end

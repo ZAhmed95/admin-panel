@@ -1,0 +1,7 @@
+(function(){
+  var cohortsContainer = document.querySelector("#cohorts");
+
+  var deletedElement = cohortsContainer.querySelector("#<%= "cohort-#{@cohort.id}" %>");
+
+  cohortsContainer.removeChild(deletedElement);
+})();

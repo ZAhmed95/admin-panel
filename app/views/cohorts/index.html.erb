@@ -1,0 +1,10 @@
+<%= content_for :controls do %>
+  <h1>Controls for cohorts:</h1>
+<% end %>
+
+<%= content_for :display do %>
+  <h1>All Cohorts for <%= @course.course_name %>:</h1>
+  <div class="container" id="cohorts">
+    <%= render partial: 'cohorts/list' %>
+  </div>
+<% end %>

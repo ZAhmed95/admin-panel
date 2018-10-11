@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    render 'form'
   end
 
   def create
@@ -21,34 +22,15 @@ class CoursesController < ApplicationController
     end
   end
 
-  # helper method
-  def find_course(id)
-    course = Course.find_by_id(id)
-  end
-
-  # helper method
-  def find_course_or_redirect
-    id = params[:id]
-    course = find_course(id)
-    unless course
-      # if something went wrong, choose appropriate action
-      flash[:alert] = "Course with id #{id} doesn't exist."
-      respond_to do |format|
-        format.html { redirect_to courses_path }
-        format.js { render 'courses/redirect.js.erb' }
-        format.json { {error: "Course with id #{id} doesn't exist."}.to_json }
-      end and return false
-    end
-    course
-  end
-
   def show
     @course = find_course_or_redirect
+    @cohorts = @course.cohorts
   end
 
   def edit
     @course = find_course_or_redirect
     @editing = true
+    render 'form'
   end
   
   def update

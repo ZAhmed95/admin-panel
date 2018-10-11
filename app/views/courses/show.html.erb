@@ -2,10 +2,11 @@
 <%= content_for :display do %>
   <h1> <%= @course.course_name %> </h1>
   <h2> Total hours: <%= @course.total_hours %> </h2>
+  <h2> <%= link_to "View cohorts", cohorts_in_course_path(@course) %> </h2>
 <% end %>
 
 <%= content_for :controls do %>
   <%= link_to 'Edit course', edit_course_path(@course), class: "btn btn-primary" %>
   <%= link_to 'Delete course', delete_course_path(@course), remote: true, method: 'delete' %>
-  <%#= link_to 'Add cohort', new_cohort_path %>
+  <%= link_to 'Add cohort', new_cohort_in_course_path(@course) %>
 <% end %>

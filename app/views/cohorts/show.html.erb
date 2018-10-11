@@ -1,0 +1,15 @@
+<!-- TODO: style this shit -->
+<%= content_for :display do %>
+  <h1> <%= @cohort.cohort_name %> </h1>
+  <h2> Course: <%= link_to "#{@course.course_name}", course_path(@course) %> </h2>
+  <h2> Start date: <%= @cohort.start_date.strftime("%B %d, %Y") %> </h2>
+  <h2> End date: <%= @cohort.end_date.strftime("%B %d, %Y") %> </h2>
+  <h2> Instructor: <%= @instructor&.first_name || "None assigned" %> </h2>
+  <h2> Students: <%= @students.count %> </h2>
+<% end %>
+
+<%= content_for :controls do %>
+  <%= link_to 'Edit cohort', edit_cohort_path(@cohort), class: "btn btn-primary" %>
+  <%= link_to 'Delete cohort', delete_cohort_path(@cohort), remote: true, method: 'delete' %>
+  <%#= link_to 'Add cohort', new_cohort_path %>
+<% end %>

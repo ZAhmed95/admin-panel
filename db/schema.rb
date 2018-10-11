@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 2018_10_04_212425) do
   end
 
   create_table "students_cohorts", force: :cascade do |t|
-    t.bigint "students_id"
-    t.bigint "cohorts_id"
-    t.index ["cohorts_id"], name: "index_students_cohorts_on_cohorts_id"
-    t.index ["students_id"], name: "index_students_cohorts_on_students_id"
+    t.bigint "student_id"
+    t.bigint "cohort_id"
+    t.index ["cohort_id"], name: "index_students_cohorts_on_cohort_id"
+    t.index ["student_id"], name: "index_students_cohorts_on_student_id"
   end
 
   create_table "users", force: :cascade do |t|

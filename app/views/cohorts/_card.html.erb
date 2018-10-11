@@ -1,0 +1,11 @@
+<!-- TODO: format and style -->
+<div class="row" id="cohort-<%=cohort.id%>">
+  <div class="col">
+    <h1><%= cohort.cohort_name %></h1>
+    <h2>Start date: <%= cohort.start_date.strftime("%B %d, %Y") %></h2>
+    <h2>End date: <%= cohort.end_date.strftime("%B %d, %Y") %></h2>
+    <%= link_to 'View', cohort_path(cohort) %>
+    <%= link_to 'Edit', edit_cohort_path(cohort) %>
+    <%= link_to 'Delete', delete_cohort_path(cohort), remote: true, method: 'delete' %>
+  </div>
+</div>
