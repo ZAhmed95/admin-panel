@@ -1,0 +1,9 @@
+<%= content_for :controls do %>
+  <h1>Controls for instructors:</h1>
+  <%= link_to "Create instructor", new_instructor_path %>
+<% end %>
+
+<%= content_for :display do %>
+  <h1>Instructors:</h1>
+  <%= render partial: 'list' %>
+<% end %>

@@ -1,0 +1,12 @@
+<!-- TODO: format and style -->
+<div class="row" id="instructor-<%=instructor.id%>">
+  <div class="col">
+    <h1><%= "#{instructor.first_name} #{instructor.last_name}" %></h1>
+    <h2> Age: <%= instructor.age %></h2>
+    <h2> Salary: <%= number_to_currency(instructor.salary) %> </h2>
+    <h2> Highest level of education: <%= instructor.highest_level_of_education %> </h2>
+    <%= link_to 'View', instructor_path(instructor) %>
+    <%= link_to 'Edit', edit_instructor_path(instructor) %>
+    <%= link_to 'Delete', delete_instructor_path(instructor), remote: true, method: 'delete' %>
+  </div>
+</div>

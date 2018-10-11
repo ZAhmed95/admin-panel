@@ -9,8 +9,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    data = params.require(:course).permit(:course_name, :total_hours)
-    course = Course.create(data)
+    course = Course.create(course_params)
     if course.valid?
       redirect_to courses_path
     else
@@ -35,8 +34,7 @@ class CoursesController < ApplicationController
   
   def update
     @course = find_course_or_redirect
-    data = params.require(:course).permit(:course_name, :total_hours)
-    if @course.update(data)
+    if @course.update(course_params)
       flash[:success] = "Successfully edited course."
       redirect_to course_path(@course)
     else
@@ -52,5 +50,10 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_path }
       format.js
     end
+  end
+
+  private
+  def course_params
+    params.require(:course).permit(:course_name, :total_hours)
   end
 end

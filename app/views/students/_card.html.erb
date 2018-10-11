@@ -1,10 +1,11 @@
 <!-- TODO: format and style -->
-<div class="row" id="course-<%=course.id%>">
+<div class="row" id="student-<%=student.id%>">
   <div class="col">
-    <h1><%= course.course_name %></h1>
-    <h2>Total Hours: <%= course.total_hours %></h2>
-    <%= link_to 'View', course_path(course) %>
-    <%= link_to 'Edit', edit_course_path(course) %>
-    <%= link_to 'Delete', delete_course_path(course), remote: true, method: 'delete' %>
+    <h1><%= "#{student.first_name} #{student.last_name}" %></h1>
+    <h2> Age: <%= student.age %></h2>
+    <h2> Highest level of education: <%= student.highest_level_of_education %> </h2>
+    <%= link_to 'View', student_path(student) %>
+    <%= link_to 'Edit', edit_student_path(student) %>
+    <%= link_to 'Delete', delete_student_path(student), remote: true, method: 'delete' %>
   </div>
 </div>

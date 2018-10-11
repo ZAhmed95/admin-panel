@@ -1,0 +1,13 @@
+<!-- TODO: style this shit -->
+<%= content_for :display do %>
+  <h1> <%= "#{@instructor.first_name} #{@instructor.last_name}" %> </h1>
+  <h2> Age: <%= @instructor.age %></h2>
+  <h2> Salary: <%= number_to_currency(@instructor.salary) %> </h2>
+  <h2> Highest level of education: <%= @instructor.highest_level_of_education %> </h2>
+  <h2> <%#= link_to "View cohorts", cohorts_of_instructor_path(@instructor) %> </h2>
+<% end %>
+
+<%= content_for :controls do %>
+  <%= link_to 'Edit instructor', edit_instructor_path(@instructor), class: "btn btn-primary" %>
+  <%= link_to 'Delete instructor', delete_instructor_path(@instructor), method: 'delete' %>
+<% end %>

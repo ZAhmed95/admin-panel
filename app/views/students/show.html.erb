@@ -1,12 +1,12 @@
 <!-- TODO: style this shit -->
 <%= content_for :display do %>
-  <h1> <%= @course.course_name %> </h1>
-  <h2> Total hours: <%= @course.total_hours %> </h2>
-  <h2> <%= link_to "View cohorts", cohorts_in_course_path(@course) %> </h2>
+  <h1> <%= "#{@student.first_name} #{@student.last_name}" %> </h1>
+  <h2> Age: <%= @student.age %></h2>
+  <h2> Highest level of education: <%= @student.highest_level_of_education %> </h2>
+  <h2> <%#= link_to "View cohorts", cohorts_of_student_path(@student) %> </h2>
 <% end %>
 
 <%= content_for :controls do %>
-  <%= link_to 'Edit course', edit_course_path(@course), class: "btn btn-primary" %>
-  <%= link_to 'Delete course', delete_course_path(@course), remote: true, method: 'delete' %>
-  <%= link_to 'Add cohort', new_cohort_in_course_path(@course) %>
+  <%= link_to 'Edit student', edit_student_path(@student), class: "btn btn-primary" %>
+  <%= link_to 'Delete student', delete_student_path(@student), method: 'delete' %>
 <% end %>

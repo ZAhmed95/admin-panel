@@ -1,7 +1,7 @@
 (function(){
-  var coursesContainer = document.querySelector("#courses");
+  var studentsContainer = document.querySelector("#students");
 
-  var deletedElement = coursesContainer.querySelector("#<%= "course-#{@course.id}" %>");
+  var deletedElement = studentsContainer.querySelector("#<%= "student-#{@student.id}" %>");
 
-  coursesContainer.removeChild(deletedElement);
+  studentsContainer.removeChild(deletedElement);
 })();

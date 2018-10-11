@@ -39,6 +39,51 @@ class ApplicationController < ActionController::Base
     cohort
   end
 
+  def find_cohort_or_redirect
+    id = params[:id]
+    cohort = Cohort.find_by_id(id)
+    unless cohort
+      # if something went wrong, choose appropriate action
+      flash[:alert] = "Cohort with id #{id} doesn't exist."
+      respond_to do |format|
+        format.html { redirect_to cohorts_path }
+        format.js { render 'cohorts/redirect.js.erb' }
+        format.json { {error: "Cohort with id #{id} doesn't exist."}.to_json }
+      end and return false
+    end
+    cohort
+  end
+
+  def find_student_or_redirect
+    id = params[:id]
+    student = Student.find_by_id(id)
+    unless student
+      # if something went wrong, choose appropriate action
+      flash[:alert] = "Student with id #{id} doesn't exist."
+      respond_to do |format|
+        format.html { redirect_to students_path }
+        format.js { render 'students/redirect.js.erb' }
+        format.json { {error: "Student with id #{id} doesn't exist."}.to_json }
+      end and return false
+    end
+    student
+  end
+
+  def find_instructor_or_redirect
+    id = params[:id]
+    instructor = Instructor.find_by_id(id)
+    unless instructor
+      # if something went wrong, choose appropriate action
+      flash[:alert] = "Instructor with id #{id} doesn't exist."
+      respond_to do |format|
+        format.html { redirect_to instructors_path }
+        format.js { render 'instructors/redirect.js.erb' }
+        format.json { {error: "Instructor with id #{id} doesn't exist."}.to_json }
+      end and return false
+    end
+    instructor
+  end
+
   def authorize!
     unless logged_in?
       redirect_to login_path

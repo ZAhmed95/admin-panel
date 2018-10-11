@@ -1,11 +1,13 @@
-<%= form_with model: @student do |f| %>
+<%= form_with model: @instructor do |f| %>
   <h1>First name:</h1>
   <%= f.text_field :first_name %> <br>
   <h1>Last name:</h1>
   <%= f.text_field :last_name %> <br>
   <h1>Age:</h1>
   <%= f.number_field :age %> <br>
+  <h1>Salary:</h1>
+  <%= f.number_field :salary %> <br>
   <h1>Highest level of education:</h1>
   <%= f.select :highest_level_of_education, [['High School', 'hs'], ['College', 'college']], include_blank: true %> <br>
-  <%= f.submit "#{@editing ? "Edit" : "Add"} Student" %>
+  <%= f.submit "#{@editing ? "Edit" : "Add"} Instructor" %>
 <% end %>

@@ -34,7 +34,7 @@ end
 p "Create 5 cohorts for each course"
 courses.each do |language, course|
   (1..5).each do |i|
-    start_date = Faker::Date.between(Date.strptime('09/01/2016', '%m/%d/%Y'), Date.strptime('09/01/2016', '%m/%d/%Y'))
+    start_date = Faker::Date.between(Date.strptime('09/01/2016', '%m/%d/%Y'), Date.strptime('09/30/2016', '%m/%d/%Y'))
     course.cohorts.create!(
       cohort_name: "#{language} Section #{i}",
       start_date: start_date,
@@ -62,10 +62,12 @@ User.create!(
 )
 
 p "Creating seed instructors"
-Instructor.create!(
-  first_name: 'John',
-  last_name: 'Doe',
-  age: 40,
-  salary: 80000,
-  highest_level_of_education: 'phd'
-)
+30.times do
+  Instructor.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    age: rand(30..60),
+    salary: rand(60..120) * 1000,
+    highest_level_of_education: education_level[2..-1].sample
+  )
+end

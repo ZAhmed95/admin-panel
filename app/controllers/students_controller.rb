@@ -9,8 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    data = params.require(:student).permit(:student_name, :total_hours)
-    student = Student.create(data)
+    student = Student.create(student_params)
     if student.valid?
       redirect_to students_path
     else
@@ -24,9 +23,6 @@ class StudentsController < ApplicationController
 
   def show
     @student = find_student_or_redirect
-    @course = @student.course
-    @instructor = @student.instructor
-    @students = @student.students
   end
 
   def edit
@@ -37,8 +33,7 @@ class StudentsController < ApplicationController
   
   def update
     @student = find_student_or_redirect
-    data = params.require(:student).permit(:student_name, :start_date, :end_date, :course_id)
-    if @student.update(data)
+    if @student.update(student_params)
       flash[:success] = "Successfully edited student."
       redirect_to student_path(@student)
     else
@@ -54,5 +49,10 @@ class StudentsController < ApplicationController
       format.html { redirect_to students_path }
       format.js
     end
+  end
+
+  private
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, :age, :highest_level_of_education)
   end
 end

@@ -1,9 +1,9 @@
 <%= content_for :controls do %>
-  <h1>Controls for courses:</h1>
-  <%= link_to "Create course", new_course_path %>
+  <h1>Controls for students:</h1>
+  <%= link_to "Create student", new_student_path %>
 <% end %>
 
 <%= content_for :display do %>
-  <h1>Courses:</h1>
+  <h1>All Students:</h1>
   <%= render partial: 'list' %>
 <% end %>

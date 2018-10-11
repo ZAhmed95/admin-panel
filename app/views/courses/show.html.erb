@@ -6,7 +6,7 @@
 
 <%= content_for :controls do %>
   <%= link_to 'Edit course', edit_course_path(@course), class: "btn btn-primary" %>
-  <%= link_to 'Delete course', delete_course_path(@course), remote: true, method: 'delete' %>
+  <%= link_to 'Delete course', delete_course_path(@course), method: 'delete' %>
   <h3> <%= link_to "View cohorts", cohorts_in_course_path(@course) %> </h3>
   <h3> <%= link_to 'Add cohort', new_cohort_in_course_path(@course) %> </h3>
 <% end %>
