@@ -1,14 +1,12 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize!
+  skip_before_action :authenticate!
   def new
-    # TODO: make pretty
-    render 'new', layout: false
+    render 'new'
   end
 
   def create
     user = User.find_by_email(params[:email])
-    p user
-    if user && user.password_digest == params[:password]
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to main_path
     else
@@ -19,5 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete(:user_id)
+    flash[:success] = "You have been successfully logged out."
+    redirect_to login_path
   end
 end

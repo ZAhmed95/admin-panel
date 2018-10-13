@@ -1,10 +1,20 @@
-<div>
-  <%= flash[:alert] %>
+<!-- TODO: make pretty -->
+<%= content_for :display do %>
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h1 class="title-header text-center">Log in</h1>
+    <%= form_with url: '/login', remote: true do |f| %>
+      <h5> Email: </h5>
+      <%= f.text_field :email, class: 'w-100' %> <br>
+      <h5> Password: </h5>
+      <%= f.password_field :password, class: 'w-100' %> <br>
+      <hr/>
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <%= f.submit 'Log in', class: 'btn btn-primary w-100' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-<%= form_with url: '/login', remote: true do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit 'Log in' %>
 <% end %>

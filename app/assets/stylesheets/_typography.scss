@@ -7,3 +7,11 @@
 .text-font {
   font-family: 'Open Sans', sans-serif;
 }
+
+body {
+  @extend .text-font;
+}
+
+h1, h2, h3, h4, h5, h6, a, button, .title {
+  @extend .title-font;
+}

@@ -9,7 +9,8 @@
 <% end %>
 
 <%= content_for :controls do %>
-  <%= link_to 'Edit cohort', edit_cohort_path(@cohort), class: "btn btn-primary" %>
-  <%= link_to 'Delete cohort', delete_cohort_path(@cohort), method: 'delete' %>
+  <hr>
+  <%= link_to 'Edit cohort', edit_cohort_path(@cohort), class: "btn btn-primary" %> <hr>
+  <%= link_to 'Delete cohort', delete_cohort_path(@cohort), method: 'delete', class: "btn btn-danger" %> <hr>
   <%#= link_to 'Add cohort', new_cohort_path %>
 <% end %>

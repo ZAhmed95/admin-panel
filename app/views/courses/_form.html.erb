@@ -1,7 +1,0 @@
-<%= form_with model: @course do |f| %>
-  <h1>Course name:</h1>
-  <%= f.text_field :course_name %> <br>
-  <h1>Total hours:</h1>
-  <%= f.text_field :total_hours %> <br>
-  <%= f.submit "#{@editing ? "Edit" : "Create"} Course" %>
-<% end %>

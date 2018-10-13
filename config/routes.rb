@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # session
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
-  post 'logout', to: 'sessions#destroy'
+  post 'logout', to: 'sessions#destroy', as: 'logout'
   # courses
   get 'courses', to: 'courses#index', as: 'courses'
   get 'courses/new', to: 'courses#new', as: 'new_course'

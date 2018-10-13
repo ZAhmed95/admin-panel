@@ -11,22 +11,51 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to 'Home', main_path %>
-        <%= link_to 'Courses', courses_path %>
-        <%= link_to 'Cohorts', cohorts_path %>
-        <%= link_to 'Students', students_path %>
-        <%= link_to 'Instructors', instructors_path %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Zia University Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Courses
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/courses">All Courses</a>
+                <div class="dropdown-divider"></div>
+                <%= render partial: 'courses/dropdown_link', collection: Course.all, as: 'course' %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/cohorts"> Cohorts </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/instructors"> Instructors </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/students"> Students </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <% if logged_in? %>
+          <h4 class="text-muted">Logged in as: <span class="text-light"> <%= current_user.email %> </span> <%= link_to 'Log out', logout_path, method: 'post', class: 'text-muted' %> </h4>
+          <% end %>
+        </div>
       </nav>
     </header>
 
     <!-- this is the control panel on the left side of the screen -->
-    <aside id="controls">
+    <aside id="controls" class="container pt-3">
       <%= yield(:controls) %>
     </aside>
 
     <!-- this is where info is displayed, i.e. courses, cohorts, etc. -->
-    <main id="display">
+    <main id="display" class="container">
       <%= render partial: 'shared/flash' %>
       <%= yield(:display) %>
     </main>

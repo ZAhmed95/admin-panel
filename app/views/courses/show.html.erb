@@ -5,8 +5,9 @@
 <% end %>
 
 <%= content_for :controls do %>
-  <%= link_to 'Edit course', edit_course_path(@course), class: "btn btn-primary" %>
-  <%= link_to 'Delete course', delete_course_path(@course), method: 'delete' %>
-  <h3> <%= link_to "View cohorts", cohorts_in_course_path(@course) %> </h3>
-  <h3> <%= link_to 'Add cohort', new_cohort_in_course_path(@course) %> </h3>
+  <h1> Actions: </h1>
+  <%= render partial: 'shared/control_button', locals: {text: 'Edit course', path: edit_course_path(@course)} %>
+  <%= render partial: 'shared/control_button', locals: {text: 'View cohorts', path: cohorts_in_course_path(@course)} %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Add cohort', path: new_cohort_in_course_path(@course)} %>
+  <%= render partial: 'shared/delete_button', locals: {text: 'Delete cohort', path: delete_course_path(@course)} %>
 <% end %>

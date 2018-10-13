@@ -1,24 +1,26 @@
-# README
+# School Admin Panel
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails backed dashboard application designed for school administrators to manage courses, cohorts, instructors, and students.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Fluid user experience in performing common administrator functions
+- Simplistic and consistent layout for ease of navigation
+- Full CRUD functionality for courses, cohorts, instructors, and students
+- Administrative control restricted to admin level users
 
-* System dependencies
+**Coming Soon:**
 
-* Configuration
+- Customize dashboard layout and theme for a personalized user experience
+- Bulk CRUD functions for all resources
+- Search for resource by name, creation date, or other parameters
+- Finer details for resources (e.g. which days/hours cohorts meet, etc.)
+- Automatic cohort start/end date collision detection
 
-* Database creation
+## Installation
 
-* Database initialization
+**Prerequisites:**
 
-* How to run the test suite
+[Ruby](https://www.ruby-lang.org/en/documentation/) version 2.5.1
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Bundler](https://bundler.io/) version >= 1.16.4

@@ -2,7 +2,6 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 require 'faker'
-require 'date'
 
 # Setup
 # set Faker rng, to produce deterministic output every seeding
@@ -38,7 +37,7 @@ courses.each do |language, course|
     course.cohorts.create!(
       cohort_name: "#{language} Section #{i}",
       start_date: start_date,
-      end_date: start_date >> 3
+      end_date: (start_date >> 3) + 20
     )
   end
 end
@@ -57,8 +56,8 @@ end
 
 p "Creating admin user"
 User.create!(
-  email: "a",
-  password_digest: "a"
+  email: "admin@zia.edu",
+  password: "1234"
 )
 
 p "Creating seed instructors"

@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
-    render 'form'
+    render_form_with_model(@course)
   end
 
   def create
@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
   def edit
     @course = find_course_or_redirect
     @editing = true
-    render 'form'
+    render_form_with_model(@course)
   end
   
   def update

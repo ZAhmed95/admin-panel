@@ -1,6 +1,6 @@
 <%= content_for :controls do %>
   <h1>Controls for courses:</h1>
-  <%= link_to "Create course", new_course_path %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Create course', path: new_course_path} %>
 <% end %>
 
 <%= content_for :display do %>

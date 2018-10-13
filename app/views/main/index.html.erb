@@ -1,7 +1,17 @@
 <%= content_for :controls do %>
-  <h1>Controls:</h1>
+  <h1> Quick Links: </h1>
+  <%= render partial: 'shared/control_button', locals: {text: 'Courses', path: courses_path} %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Cohorts', path: cohorts_path} %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Instructors', path: instructors_path} %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Students', path: students_path} %>
 <% end %>
 
 <%= content_for :display do %>
-  <h1>Display:</h1>
+  <div class="row justify-content-center">
+    <div class="col">
+      <h1 class="text-center pt-5"> Welcome to the Zia University Dashboard. </h1>
+    </div>
+
+    <h2 class="text-center"> Use the options on the left control panel or in the navigation menu to get started.</h2>
+  </div>
 <% end %>

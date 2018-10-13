@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :education_level_map
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
@@ -7,6 +7,19 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     current_user != nil
+  end
+
+  def education_level_map(key)
+    {
+      'hs' => 'High School',
+      'college' => 'College',
+      'masters' => 'Masters',
+      'phd' => 'PhD'
+    }[key]
+  end
+
+  def render_form_with_model(model)
+    render 'shared/form', locals: {model: model}
   end
 
   def find_course_or_redirect(options={})
@@ -22,21 +35,6 @@ class ApplicationController < ActionController::Base
       end and return false
     end
     course
-  end
-
-  def find_cohort_or_redirect
-    id = params[:id]
-    cohort = Cohort.includes(:course, :instructor, :students).find_by_id(id)
-    unless cohort
-      # if something went wrong, choose appropriate action
-      flash[:alert] = "Cohort with id #{id} doesn't exist."
-      respond_to do |format|
-        format.html { redirect_to cohorts_path }
-        format.js { render 'cohorts/redirect.js.erb' }
-        format.json { {error: "Cohort with id #{id} doesn't exist."}.to_json }
-      end and return false
-    end
-    cohort
   end
 
   def find_cohort_or_redirect
@@ -84,11 +82,17 @@ class ApplicationController < ActionController::Base
     instructor
   end
 
-  def authorize!
+  private
+  def authenticate!
     unless logged_in?
+      flash[:alert] = "You must be logged in first."
       redirect_to login_path
     end
   end
 
-  before_action :authorize!
+  def authorize!
+    
+  end
+
+  before_action :authenticate!
 end

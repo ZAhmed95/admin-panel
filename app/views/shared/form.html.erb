@@ -3,7 +3,7 @@
 <% end %>
 
 <%= content_for :display do %>
-  <%= 
+  <%=
     render partial: 'shared/form_wrapper', locals: {
       title: if @editing then "Edit #{model.model_name.name}" else "Add #{model.model_name.name}" end,
       model: model,

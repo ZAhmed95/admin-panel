@@ -1,11 +1,21 @@
 // Place all the styles related to the MainController controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'bootstrap';
 @import 'colors';
 @import 'typography';
 
-$header-height: 80px;
+// changing bootstrap defaults
+$primary: $highlight;
+$dark: $dark-bg;
+$light: $light-bg;
+
+@import 'bootstrap';
+
+$header-height: 56px;
+
+a:hover {
+  text-decoration: none;
+}
 
 header {
   position: fixed;
@@ -24,6 +34,10 @@ header {
 }
 
 #display {
-  padding-top: $header-height;
-  padding-left: 20vw;
+  padding-top: $header-height + 20px;
+  padding-left: 10vw;
+}
+
+.title-header {
+  @extend .bg-dark, .text-light, .p-2, .pl-3, .rounded;
 }

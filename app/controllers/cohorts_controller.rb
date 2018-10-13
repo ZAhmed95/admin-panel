@@ -5,7 +5,7 @@ class CohortsController < ApplicationController
 
   def new
     @cohort = Cohort.new
-    render 'form'
+    render_form_with_model(@cohort)
   end
 
   def show
@@ -18,7 +18,7 @@ class CohortsController < ApplicationController
   def edit
     @cohort = find_cohort_or_redirect
     @editing = true
-    render 'form'
+    render_form_with_model(@cohort)
   end
   
   def update
