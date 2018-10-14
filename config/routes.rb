@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   delete 'students/:id', to: 'students#destroy', as: 'delete_student', id: /\d+/
   # students in cohorts
   get 'cohorts/:id/students', to: 'cohort_students#index', as: 'students_in_cohort', id: /\d+/
-  get 'cohorts/:id/students/new', to: 'cohort_students#new', as: 'new_students_in_cohort', id: /\d+/
+  get 'cohorts/:id/students/new', to: 'cohort_students#new', as: 'add_students_to_cohort', id: /\d+/
   post 'cohorts/:id/students', to: 'cohort_students#create', id: /\d+/
+  delete 'cohorts/:cohort_id/students/:student_id', to: 'cohort_students#destroy', as: 'remove_student_from_cohort', cohort_id: /\d+/, student_id: /\d+/
   # instructors
   get 'instructors', to: 'instructors#index', as: 'instructors'
   get 'instructors/new', to: 'instructors#new', as: 'new_instructor'

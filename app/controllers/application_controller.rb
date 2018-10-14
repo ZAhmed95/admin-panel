@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     render 'shared/form', locals: {model: model}
   end
 
-  def find_course_or_redirect(options={})
+  def find_course_or_redirect
     id = params[:id]
     course = Course.find_by_id(id)
     unless course
@@ -37,8 +37,8 @@ class ApplicationController < ActionController::Base
     course
   end
 
-  def find_cohort_or_redirect
-    id = params[:id]
+  def find_cohort_or_redirect(options={})
+    id = params[options[:id_key] || :id]
     cohort = Cohort.find_by_id(id)
     unless cohort
       # if something went wrong, choose appropriate action

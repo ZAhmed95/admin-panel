@@ -1,0 +1,9 @@
+<%= content_for :display do %>
+  <h1>All Students in cohort <%= @cohort.cohort_name %>:</h1>
+  <%= render partial: 'students/list', locals: {card: 'cohort_students/card'} %>
+<% end %>
+
+<%= content_for :controls do %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Back to cohort', path: cohort_path(@cohort)} %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Add students', path: add_students_to_cohort_path(@cohort)} %>
+<% end %>

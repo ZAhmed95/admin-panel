@@ -1,0 +1,1 @@
+<%= f.select :student_ids, (Student.all.order(:last_name) - @cohort.students).map {|student| [student.name_last_first, student.id]}, {include_blank: true}, {multiple: true, class: 'w-100', size: '10'} %>

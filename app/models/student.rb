@@ -11,4 +11,8 @@ class Student < ActiveRecord::Base
     message: "Age must be an integer less than 150."
   }
   validates :highest_level_of_education, inclusion: {in: ['hs', 'college', 'masters', 'phd']}
+
+  def name_last_first
+    "#{last_name}, #{first_name}"
+  end
 end

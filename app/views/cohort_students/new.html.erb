@@ -1,0 +1,7 @@
+<%= content_for :display do %>
+  <%= render partial: 'shared/form_wrapper', locals: {title: 'Add students', model: @cohort, fields_path: 'cohort_students/form_fields', submit_text: 'Add students', action: students_in_cohort_path(@cohort)} %>
+<% end %>
+
+<%= content_for :controls do %>
+  <%= render partial: 'shared/control_button', locals: {text: 'Cancel', path: cohort_path(@cohort)} %>
+<% end %>

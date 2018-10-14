@@ -5,6 +5,6 @@
     <h2> Highest level of education: <%= education_level_map(student.highest_level_of_education) %> </h2>
     <%= link_to 'View', student_path(student), class: "btn btn-primary" %>
     <%= link_to 'Edit', edit_student_path(student), class: "btn btn-primary" %>
-    <%= link_to 'Delete', delete_student_path(student), remote: true, method: 'delete', class: "btn btn-danger" %>
+    <%= link_to 'Remove', remove_student_from_cohort_path(@cohort, student), remote: true, method: 'delete', class: "btn btn-danger" %>
   </div>
 </div>

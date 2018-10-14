@@ -1,4 +1,3 @@
-# TODO: make this controller work
 class CohortStudentsController < ApplicationController
   def index
     @cohort = find_cohort_or_redirect
@@ -9,17 +8,31 @@ class CohortStudentsController < ApplicationController
     @cohort = find_cohort_or_redirect
   end
 
-  def assign
+  def create
     # assign selected students to cohort
     @cohort = (find_cohort_or_redirect or return)
-    if student.valid?
-      redirect_to students_in_cohort_path(cohort)
+    # get the submitted student ids, excluding the first index, which is blank
+    student_ids = params[:cohort][:student_ids][1..-1]
+    students = Student.where(id: student_ids)
+    count = students.count
+    if count > 0
+      @cohort.students << students
+      flash[:success] = "Added #{count} students to the cohort."
+      redirect_to students_in_cohort_path(@cohort)
     else
-      flash[:alert] = "Could not create new student."
-      student.errors.messages.each do |key, value|
-        flash[:alert] = value[0]
+      flash[:alert] = "Select at least one student to add, or cancel."
+      redirect_to add_students_to_cohort_path(@cohort)
+    end
+  end
+
+  def destroy
+    @cohort = (find_cohort_or_redirect(id_key: :cohort_id) or return)
+    @student = @cohort.students.find_by_id(params[:student_id])
+    if @student
+      @cohort.students.delete(@student)
+      respond_to do |format|
+        format.js { render 'students/destroy.js.erb' }
       end
-      redirect_to new_student_in_cohort_path(cohort)
     end
   end
 end
