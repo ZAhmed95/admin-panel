@@ -1,7 +1,7 @@
 class CohortStudentsController < ApplicationController
   def index
     @cohort = find_cohort_or_redirect
-    @students = @cohort.students
+    @students = @cohort.students.order(:last_name)
   end
 
   def new
