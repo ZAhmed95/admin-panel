@@ -23,8 +23,7 @@ class CohortsController < ApplicationController
   
   def update
     @cohort = find_cohort_or_redirect
-    data = params.require(:cohort).permit(:cohort_name, :start_date, :end_date, :course_id)
-    if @cohort.update(data)
+    if @cohort.update(cohort_params)
       flash[:success] = "Successfully edited cohort."
       redirect_to cohort_path(@cohort)
     else
@@ -40,5 +39,9 @@ class CohortsController < ApplicationController
       format.html { redirect_to cohorts_path }
       format.js
     end
+  end
+
+  def cohort_params
+    params.require(:cohort).permit(:cohort_name, :start_date, :end_date, :course_id, :instructor_id)
   end
 end

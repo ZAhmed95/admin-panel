@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    render 'form'
+    render_form_with_model(@student)
   end
 
   def create
@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
   def edit
     @student = find_student_or_redirect
     @editing = true
-    render 'form'
+    render_form_with_model(@student)
   end
   
   def update

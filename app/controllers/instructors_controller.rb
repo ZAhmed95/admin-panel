@@ -5,7 +5,7 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
-    render 'form'
+    render_form_with_model(@instructor)
   end
 
   def create
@@ -29,7 +29,7 @@ class InstructorsController < ApplicationController
   def edit
     @instructor = find_instructor_or_redirect
     @editing = true
-    render 'form'
+    render_form_with_model(@instructor)
   end
   
   def update

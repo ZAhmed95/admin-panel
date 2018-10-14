@@ -15,4 +15,8 @@ class Instructor < ActiveRecord::Base
     message: "Salary must be a positive integer."
   }
   validates :highest_level_of_education, inclusion: {in: ['hs', 'college', 'masters', 'phd']}
+
+  def name_last_first
+    "#{last_name}, #{first_name}"
+  end
 end

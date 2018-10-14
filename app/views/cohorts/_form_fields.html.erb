@@ -1,7 +1,9 @@
 <h1>Cohort name:</h1>
-<%= f.text_field :cohort_name %> <br>
+<%= f.text_field :cohort_name, class: 'w-100' %> <br>
 <h1>Start date:</h1>
-<%= f.date_field :start_date %> <br>
+<%= f.date_field :start_date, class: 'w-100' %> <br>
 <h1>End date:</h1>
-<%= f.date_field :end_date %> <br>
+<%= f.date_field :end_date, class: 'w-100' %> <br>
+<h1> Instructor: </h1>
+<%= f.select :instructor_id, Instructor.all.order(:last_name).map {|instructor| [instructor.name_last_first, instructor.id]}, {include_blank: true}, class: 'w-100' %>
 <%= f.hidden_field :course_id %> <br>

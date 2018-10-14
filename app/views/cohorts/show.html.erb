@@ -3,7 +3,7 @@
   <h2> Course: <%= link_to "#{@course.course_name}", course_path(@course) %> </h2>
   <h2> Start date: <%= @cohort.start_date.strftime("%B %d, %Y") %> </h2>
   <h2> End date: <%= @cohort.end_date.strftime("%B %d, %Y") %> </h2>
-  <h2> Instructor: <%= @instructor&.first_name || "None assigned" %> </h2>
+  <h2> Instructor: <%= @instructor&.name_last_first || "None assigned" %> </h2>
   <h2> Students: <%= @students.count %> </h2>
 <% end %>
 

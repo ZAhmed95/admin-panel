@@ -8,7 +8,9 @@
       title: if @editing then "Edit #{model.model_name.name}" else "Add #{model.model_name.name}" end,
       model: model,
       fields_path: "#{model.model_name.plural}/form_fields",
-      submit_text: "#{@editing ? "Edit" : "Add"} #{model.model_name.name}"
+      submit_text: "#{@editing ? "Edit" : "Add"} #{model.model_name.name}",
+      method: @editing ? 'patch' : 'post',
+      action: @editing ? send("#{model.model_name.singular}_path", model) : send("#{model.model_name.plural}_path")
     }
   %>
 <% end %>

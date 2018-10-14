@@ -1,5 +1,13 @@
 <%= content_for :display do %>
-  <%= render partial: 'course_cohorts/form' %>
+  <%=
+    render partial: 'shared/form_wrapper', locals: {
+      title: if @editing then "Edit Cohort" else "Add Cohort" end,
+      model: @course,
+      fields_path: "cohorts/form_fields",
+      submit_text: "#{@editing ? "Edit" : "Add"} Cohort",
+      action: cohorts_in_course_path(@course)
+    }
+  %>
 <% end %>
 
 <%= content_for :controls do %>
