@@ -1,6 +1,6 @@
 # School Admin Panel
 
-A Ruby on Rails backed dashboard application designed for school administrators to manage courses, cohorts, instructors, and students.
+A Ruby on Rails backed dashboard application designed for school administrators to manage courses, cohorts, instructors, and students. [Check it out here](https://zia-admin-panel.herokuapp.com).
 
 ## Features
 
